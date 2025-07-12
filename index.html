@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Checkers Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background gradient container -->
+    <div id="background-gradient"></div>
+    
+    <!-- Snow container (will be populated by JS) -->
+    <div id="snow-container"></div>
+    
+    <!-- Welcome Screen -->
+    <div id="welcome-screen">
+        <div class="welcome-container">
+            <h1 class="game-title">3D CHECKERS</h1>
+            
+            <!-- Game Mode Selection -->
+            <div class="menu-section">
+                <h2>Game Mode</h2>
+                <div class="option-buttons">
+                    <button id="vs-ai-btn" class="option-btn selected">vs Computer</button>
+                    <button id="vs-player-btn" class="option-btn">vs Player</button>
+                </div>
+            </div>
+            
+            <!-- Difficulty Selection (only visible when vs Computer is selected) -->
+            <div id="difficulty-section" class="menu-section">
+                <h2>Difficulty</h2>
+                <div class="option-buttons">
+                    <button id="easy-btn" class="option-btn">Easy</button>
+                    <button id="medium-btn" class="option-btn selected">Medium</button>
+                    <button id="hard-btn" class="option-btn">Hard</button>
+                    <button id="expert-btn" class="option-btn">Expert</button>
+                </div>
+            </div>
+            
+            <!-- Join/Host Game Section (only visible when vs Player is selected) -->
+            <div id="multiplayer-section" class="menu-section" style="display: none;">
+                <h2>Multiplayer</h2>
+                <div class="option-buttons">
+                    <button id="host-game-btn" class="option-btn selected">Host Game</button>
+                    <button id="join-game-btn" class="option-btn">Join Game</button>
+                </div>
+                <div id="join-game-input" style="display: none; margin-top: 10px;">
+                    <input type="text" id="game-code-input" placeholder="Enter game code">
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button id="start-game-btn">START GAME</button>
+                <button id="exit-btn">EXIT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Container (initially hidden) -->
+    <div id="game-container" style="display: none;">
+        <div id="chess-board"></div>
+        <div id="game-info">
+            <div id="turn-indicator">Red's Turn</div>
+            <div id="captured-pieces">
+                <div id="red-captured"></div>
+                <div id="yellow-captured"></div>
+            </div>
+            <div id="thinking" style="display: none; text-align: center; margin: 10px 0;">Computer thinking...</div>
+            <button id="back-to-menu">Back to Menu</button>
+        </div>
+    </div>
+
+    <!-- Three.js Library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Socket.io Client Library -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    
+    <!-- Game Scripts -->
+    <script src="rules.js"></script>
+    <script src="chess.js"></script>
+    <script src="chess-ai.js"></script>
+    <script src="background.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
